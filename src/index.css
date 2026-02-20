@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+/* ── Design tokens — DARK (default) ─────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --color-bg: #0f0f13;
+  --color-bg-card: #1a1a24;
+  --color-bg-elevated: #22222f;
+  --color-bg-input: #16161f;
+  --color-border: #2a2a3a;
+  --color-border-focus: #6c5ce7;
+  --color-text: #e8e8f0;
+  --color-text-muted: #8888a0;
+  --color-text-dim: #5c5c74;
+  --color-accent: #6c5ce7;
+  --color-accent-hover: #7c6ef7;
+  --color-accent-glow: rgba(108, 92, 231, 0.25);
+  --color-success: #00d68f;
+  --color-error: #ff4757;
+  --color-warning: #ffc048;
+  --color-info: #3ec2f7;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.25);
+  --backdrop: rgba(0, 0, 0, 0.5);
+}
+
+/* ── Design tokens — LIGHT ──────────────────────────────────────────── */
+[data-theme="light"] {
+  --color-bg: #f4f4f8;
+  --color-bg-card: #ffffff;
+  --color-bg-elevated: #f0f0f5;
+  --color-bg-input: #f8f8fb;
+  --color-border: #e0e0ea;
+  --color-border-focus: #6c5ce7;
+  --color-text: #1a1a2e;
+  --color-text-muted: #6e6e82;
+  --color-text-dim: #9e9eb5;
+  --color-accent: #6c5ce7;
+  --color-accent-hover: #5a4ad4;
+  --color-accent-glow: rgba(108, 92, 231, 0.12);
+  --color-success: #00b87a;
+  --color-error: #e8364e;
+  --color-warning: #e6a630;
+  --color-info: #2b9fd1;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --backdrop: rgba(0, 0, 0, 0.25);
+}
+
+/* ── Base resets ────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-dim);
+}
+
+/* ── Skeleton shimmer animation ─────────────────────────────────────── */
+@keyframes shimmer {
+  0% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ── Mobile sidebar overlay ─────────────────────────────────────────── */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: var(--backdrop);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
